@@ -10,17 +10,17 @@ class Animal {
 }
 
 
-class Cat {
+class CatGroup {
     constructor(name) {
         this.name = name;
-        this.cat = [];
+        this.catGroup = [];
     }
 
-    addPlayer(player) {
-        if (player instanceof Player) {
-            this.players.push(player);
+    addCat(catGroup) {
+        if (catGroup instanceof CatGroup) {
+            this.catGroup.push(this.name);
         } else {
-            throw new Error(`You can only add an instance of Player. Argument is not a player: ${player}`);
+            throw new Error(`You can only add an instance of Cat. Argument is not a cat: ${cat}`);
         }
     }
 
