@@ -1,3 +1,4 @@
+//sections a class as member
 class Member {
     constructor(name, age) {
         this.name = name;
@@ -8,12 +9,13 @@ class Member {
     }
 }
 
+// sections a class as family
 class Family {
     constructor(name) {
         this.name = name;
         this.members = [];
     }
-
+//allows adding a member to a family class
     addMember(member) {
         if (member instanceof Member) {
             this.members.push(member);
@@ -21,18 +23,18 @@ class Family {
             throw new Error(`You can only add an instance of Member. Argument is not a member: ${member}`);
         }
     }
-
+//describes the family
     describe() {
         return`${this.name} has ${this.members.lengths} family members.`;
     }
 }
-
+//this is the entire menu below
 class Menu {
     constructor() {
-        this.members = [];
+        this.families = [];
         this.selected = null;
     }
-
+//shows the first screen menu
     start() {
         let selection = this.showMainMenuOptions();
 
@@ -68,7 +70,7 @@ class Menu {
             4) display all families
             `);
     }
-
+//info for a family
     showFamilyMenuOptions(familyInfo) {
         return prompt (`
           0) back
@@ -86,12 +88,12 @@ class Menu {
         }
         alert(familyString);
     }
-
+//creating a family
     createFamily() {
         let name = prompt('Enter name for new family:');
         this.families.push(new Family(name));
     }
-
+//views family
     viewFamily() {
         let index = prompt('Enter the index of the family you wish to view:');
         if (index > -1 && index < this.families.length) {
@@ -113,20 +115,20 @@ class Menu {
             }
         }
     }
-
+//deletes family
     deleteFamily() {
         let index = prompt('Enter the index of the family you wish to delete:');
         if (index > -1 && index < this.families.length) {
             this.families.splice(index, 1);
         }
     }
-
+//creates new member
     createMember() {
         let name = prompt('Enter name for new member:');
         let age = prompt('Enter age for new member:');
         this.selectedFamily.members.push(new Member(name, age));
     }
-
+// deletes member
     deleteMember() {
         let index = prompt('Enter the index of the member you wish to delete:');
         if (index > -1 && index < this.selectedFamily.members.length) {
@@ -134,6 +136,6 @@ class Menu {
         }
     }
 }
-
+//wraps the menu to keep going back to the menu or submenu
 let menu = new Menu();
 menu.start();
